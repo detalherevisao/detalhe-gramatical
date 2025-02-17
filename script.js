@@ -18,46 +18,14 @@ let perguntas = [
         pergunta: "Qual 'porquê' usamos para dar respostas?", 
         opcoes: ["Porque", "Por que", "Porquê", "Por quê"], 
         resposta: "Porque" 
-    },
-    { 
-        pergunta: "Complete: 'Ele saiu cedo, não sei ___.''", 
-        opcoes: ["Por quê", "Por que", "Porque", "Porquê"], 
-        resposta: "Por quê" 
-    },
-    { 
-        pergunta: "Complete: 'Ele explicou o ___ da demora.'", 
-        opcoes: ["Porque", "Por que", "Porquê", "Por quê"], 
-        resposta: "Porquê" 
-    },
-    { 
-        pergunta: "Complete: '___ você não veio à festa?'", 
-        opcoes: ["Porque", "Por que", "Porquê", "Por quê"], 
-        resposta: "Por que" 
-    },
-    { 
-        pergunta: "Complete: 'Eu não fui ___ estava chovendo.'", 
-        opcoes: ["Por quê", "Por que", "Porque", "Porquê"], 
-        resposta: "Porque" 
     }
 ];
 
 let pontuacao = 0;
 let perguntaAtual = 0;
-let nomeUsuario = "";
+let premioRecebido = localStorage.getItem("premioRecebido");
 
-// Função para iniciar o quiz depois que o usuário digitar o nome
-function iniciarQuiz() {
-    nomeUsuario = document.getElementById("nomeUsuario").value.trim();
-    if (nomeUsuario === "") {
-        alert("Por favor, digite seu nome antes de iniciar o quiz.");
-        return;
-    }
-    document.getElementById("inicio-quiz").style.display = "none";
-    document.getElementById("quiz-container").style.display = "block";
-    carregarPergunta();
-}
-
-// Função para carregar perguntas e opções
+// Função para carregar as perguntas
 function carregarPergunta() {
     if (perguntaAtual < perguntas.length) {
         let perguntaAtualObj = perguntas[perguntaAtual];
@@ -75,12 +43,11 @@ function carregarPergunta() {
 
         document.getElementById("pontuacao").innerText = `Pontuação: ${pontuacao}`;
     } else {
-        salvarRanking();
-        exibirRanking();
+        verificarVitoria();
     }
 }
 
-// Função para verificar resposta
+// Função para verificar a resposta do jogador
 function verificarResposta(respostaUsuario) {
     let respostaCorreta = perguntas[perguntaAtual].resposta;
 
@@ -95,70 +62,54 @@ function verificarResposta(respostaUsuario) {
     setTimeout(carregarPergunta, 1500);
 }
 
-// Exibir o ranking automaticamente quando o quiz termina
-function exibirRanking() {
+// Função para verificar se o jogador ganhou o prêmio
+function verificarVitoria() {
     document.getElementById("quiz-container").style.display = "none";
-    document.getElementById("ranking-container").style.display = "block";
 
-    let ranking = JSON.parse(localStorage.getItem("ranking")) || [];
-    if (ranking.length === 0) {
-        document.getElementById("ranking-lista").innerHTML = "<p>Ainda não há jogadores no ranking.</p>";
+    if (pontuacao === perguntas.length && !premioRecebido) {
+        document.getElementById("premio-container").style.display = "block";
+    } else {
+        document.getElementById("premio-container").innerHTML = `
+            <h2>🏆 Quiz concluído! Mas o prêmio já foi entregue ao primeiro vencedor.</h2>
+            <a href="index.html" class="botao">Voltar ao início</a>
+        `;
+    }
+}
+
+// Função para enviar o prêmio via Pix
+function enviarPremio() {
+    let chavePix = document.getElementById("chavePix").value.trim();
+
+    if (chavePix === "") {
+        alert("Por favor, insira uma chave Pix válida.");
         return;
     }
 
-    let rankingHTML = "";
-    ranking.forEach((jogador, index) => {
-        rankingHTML += `<li><strong>${index + 1}. ${jogador.nome}</strong> - ${jogador.pontuacao} pontos</li>`;
-    });
-
-    document.getElementById("ranking-lista").innerHTML = rankingHTML;
-}
-
-// Salvar o nome e pontuação no ranking
-function salvarRanking() {
-    let ranking = JSON.parse(localStorage.getItem("ranking")) || [];
-    ranking.push({ nome: nomeUsuario, pontuacao: pontuacao });
-    ranking.sort((a, b) => b.pontuacao - a.pontuacao);
-    localStorage.setItem("ranking", JSON.stringify(ranking));
-}
-
-// Função para zerar o ranking com confirmação
-function resetarRanking() {
-    if (confirm("Tem certeza que deseja zerar o ranking? Esta ação não pode ser desfeita.")) {
-        localStorage.removeItem("ranking");
-        alert("Ranking zerado com sucesso!");
-        location.reload();
-    }
-}
-
-// Voltar ao quiz após visualizar o ranking
-function voltarQuiz() {
-    location.reload();
-}
-
-window.onload = function () {
-    document.getElementById("quiz-container").style.display = "none";
-    document.getElementById("ranking-container").style.display = "none";
-};
-function verificarVitoria() {
-    if (pontuacao === perguntas.length) { // Acertou todas as perguntas
-        let premioRecebido = localStorage.getItem("premioRecebido");
-
-        if (!premioRecebido) {
-            document.getElementById("quiz-container").innerHTML = `
-                <h2>🎉 Parabéns! Você ganhou R$ 5,00! 🎉</h2>
-                <p>Digite sua chave Pix para receber o prêmio:</p>
-                <input type="text" id="chavePix" placeholder="Digite sua chave Pix">
-                <button onclick="enviarPremio()">Receber Prêmio</button>
-            `;
-        } else {
-            document.getElementById("quiz-container").innerHTML = `
-                <h2>🏆 Quiz concluído! Mas o prêmio já foi entregue ao primeiro vencedor.</h2>
+    // Simulação de pagamento via API
+    fetch("https://api.pagamento.com/pagar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            chave: chavePix,
+            valor: 5.00,
+            descricao: "Prêmio do Quiz - Detalhe Gramatical"
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.sucesso) {
+            alert("Pagamento realizado com sucesso! 🎉");
+            localStorage.setItem("premioRecebido", "true");
+            document.getElementById("premio-container").innerHTML = `
+                <h2>✅ Prêmio enviado!</h2>
+                <p>O valor foi transferido para sua conta via Pix.</p>
                 <a href="index.html" class="botao">Voltar ao início</a>
             `;
+        } else {
+            alert("Erro ao processar o pagamento. Tente novamente mais tarde.");
         }
-    }
+    })
+    .catch(error => console.error("Erro no pagamento:", error));
 }
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("Script carregado!");
-});
+
+window.onload = carregarPergunta;

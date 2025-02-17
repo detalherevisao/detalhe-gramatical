@@ -19,6 +19,14 @@
             <p id="feedback"></p>
             <p id="pontuacao"></p>
         </section>
+
+        <!-- Formulário para receber chave Pix caso o jogador vença -->
+        <section id="premio-container" style="display: none;">
+            <h2>🎉 Parabéns! Você ganhou R$ 5,00! 🎉</h2>
+            <p>Digite sua chave Pix para receber o prêmio:</p>
+            <input type="text" id="chavePix" placeholder="Digite sua chave Pix">
+            <button onclick="enviarPremio()">Receber Prêmio</button>
+        </section>
     </main>
 
     <script src="script.js"></script>

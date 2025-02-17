@@ -18,12 +18,21 @@ let perguntas = [
         pergunta: "Qual 'porquê' usamos para dar respostas?", 
         opcoes: ["Porque", "Por que", "Porquê", "Por quê"], 
         resposta: "Porque" 
+    },
+    { 
+        pergunta: "Complete: 'Ele saiu cedo, não sei ___.''", 
+        opcoes: ["Por quê", "Por que", "Porque", "Porquê"], 
+        resposta: "Por quê" 
+    },
+    { 
+        pergunta: "Complete: 'Ele explicou o ___ da demora.'", 
+        opcoes: ["Porque", "Por que", "Porquê", "Por quê"], 
+        resposta: "Porquê" 
     }
 ];
 
 let pontuacao = 0;
 let perguntaAtual = 0;
-let premioRecebido = localStorage.getItem("premioRecebido");
 
 // Função para carregar as perguntas
 function carregarPergunta() {
@@ -43,7 +52,7 @@ function carregarPergunta() {
 
         document.getElementById("pontuacao").innerText = `Pontuação: ${pontuacao}`;
     } else {
-        verificarVitoria();
+        exibirFormularioEmail();
     }
 }
 
@@ -62,54 +71,27 @@ function verificarResposta(respostaUsuario) {
     setTimeout(carregarPergunta, 1500);
 }
 
-// Função para verificar se o jogador ganhou o prêmio
-function verificarVitoria() {
+// Função para exibir o formulário de captura de e-mail
+function exibirFormularioEmail() {
     document.getElementById("quiz-container").style.display = "none";
-
-    if (pontuacao === perguntas.length && !premioRecebido) {
-        document.getElementById("premio-container").style.display = "block";
-    } else {
-        document.getElementById("premio-container").innerHTML = `
-            <h2>🏆 Quiz concluído! Mas o prêmio já foi entregue ao primeiro vencedor.</h2>
-            <a href="index.html" class="botao">Voltar ao início</a>
-        `;
-    }
+    document.getElementById("email-container").style.display = "block";
 }
 
-// Função para enviar o prêmio via Pix
-function enviarPremio() {
-    let chavePix = document.getElementById("chavePix").value.trim();
+// Função para "enviar" o e-mail (por enquanto apenas exibe uma mensagem)
+function enviarEmail() {
+    let email = document.getElementById("emailUsuario").value.trim();
 
-    if (chavePix === "") {
-        alert("Por favor, insira uma chave Pix válida.");
+    if (email === "" || !email.includes("@")) {
+        alert("Por favor, insira um e-mail válido.");
         return;
     }
 
-    // Simulação de pagamento via API
-    fetch("https://api.pagamento.com/pagar", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            chave: chavePix,
-            valor: 0,50,
-            descricao: "Prêmio do Quiz - Detalhe Gramatical"
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.sucesso) {
-            alert("Pagamento realizado com sucesso! 🎉");
-            localStorage.setItem("premioRecebido", "true");
-            document.getElementById("premio-container").innerHTML = `
-                <h2>✅ Prêmio enviado!</h2>
-                <p>O valor foi transferido para sua conta via Pix.</p>
-                <a href="index.html" class="botao">Voltar ao início</a>
-            `;
-        } else {
-            alert("Erro ao processar o pagamento. Tente novamente mais tarde.");
-        }
-    })
-    .catch(error => console.error("Erro no pagamento:", error));
+    alert(`Obrigado! O acesso antecipado ao material será enviado para ${email}.`);
+    document.getElementById("email-container").innerHTML = `
+        <h2>✅ E-mail registrado com sucesso!</h2>
+        <p>Fique de olho na sua caixa de entrada para acessar o material!</p>
+        <a href="index.html" class="botao">Voltar ao início</a>
+    `;
 }
 
 window.onload = carregarPergunta;

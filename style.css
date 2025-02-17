@@ -115,3 +115,48 @@ ul {
 .porque-item div {
     text-align: left;
 }
+/* Estilizar o aviso do quiz */
+.aviso-quiz {
+    background-color: #ffdd57;
+    color: #333;
+    text-align: center;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+/* Melhorar o destaque do botão do quiz */
+.quiz-botao {
+    text-align: center;
+    background: #0073e6;
+    color: white;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.quiz-botao h2 {
+    color: #fff;
+}
+
+.botao.destaque {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color: #ff4500;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+.botao.destaque:hover {
+    background-color: #cc3700;
+}

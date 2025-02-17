@@ -140,3 +140,22 @@ window.onload = function () {
     document.getElementById("quiz-container").style.display = "none";
     document.getElementById("ranking-container").style.display = "none";
 };
+function verificarVitoria() {
+    if (pontuacao === perguntas.length) { // Acertou todas as perguntas
+        let premioRecebido = localStorage.getItem("premioRecebido");
+
+        if (!premioRecebido) {
+            document.getElementById("quiz-container").innerHTML = `
+                <h2>🎉 Parabéns! Você ganhou R$ 5,00! 🎉</h2>
+                <p>Digite sua chave Pix para receber o prêmio:</p>
+                <input type="text" id="chavePix" placeholder="Digite sua chave Pix">
+                <button onclick="enviarPremio()">Receber Prêmio</button>
+            `;
+        } else {
+            document.getElementById("quiz-container").innerHTML = `
+                <h2>🏆 Quiz concluído! Mas o prêmio já foi entregue ao primeiro vencedor.</h2>
+                <a href="index.html" class="botao">Voltar ao início</a>
+            `;
+        }
+    }
+}

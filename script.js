@@ -91,7 +91,7 @@ function enviarPremio() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             chave: chavePix,
-            valor: 5.00,
+            valor: 0,50,
             descricao: "Prêmio do Quiz - Detalhe Gramatical"
         })
     })

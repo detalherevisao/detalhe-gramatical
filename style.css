@@ -132,8 +132,8 @@ ul {
 /* Melhorar o destaque do botão do quiz */
 .quiz-botao {
     text-align: center;
-    background: #0073e6;
-    color: white;
+    background: #fff3e0;
+    color: black;
     padding: 30px;
     margin: 30px auto;
     max-width: 800px;
@@ -142,15 +142,16 @@ ul {
 }
 
 .quiz-botao h2 {
-    color: #fff;
+    color: #333;
 }
 
+/* Novo botão de destaque */
 .botao.destaque {
     display: inline-block;
     padding: 15px 30px;
     font-size: 1.5em;
     font-weight: bold;
-    background-color: #ff4500;
+    background-color: #ff4500; /* Vermelho chamativo */
     color: white;
     text-decoration: none;
     border-radius: 10px;
@@ -158,5 +159,5 @@ ul {
 }
 
 .botao.destaque:hover {
-    background-color: #ffdd57;
+    background-color: #cc3700; /* Vermelho mais escuro ao passar o mouse */
 }

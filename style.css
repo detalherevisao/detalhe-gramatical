@@ -1,71 +1,42 @@
-/* Configuração geral do site */
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f8f8f8;
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
-
-/* Cabeçalho */
-header {
-    background-color: #000; /* Agora preto */
-    color: white;
+/* Layout das explicações */
+.explicacao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9f9f9;
     padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    margin: 0;
+.explicacao .texto {
+    flex: 1;
+    text-align: left;
+    padding-right: 20px;
 }
 
-/* Botões */
-.botao {
-    display: inline-block;
-    margin: 15px;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    color: white;
-    background: #000; /* Preto */
-    text-decoration: none;
+.explicacao-img {
+    width: 120px;
+    height: auto;
     border-radius: 5px;
-    transition: background 0.3s ease-in-out;
 }
 
-.botao:hover {
-    background: #444; /* Cinza escuro ao passar o mouse */
-}
-
-/* Botão do Quiz com Animação */
-.botao.destaque {
-    background-color: #ff4500;
-    animation: pulsar 1.5s infinite alternate;
-}
-
-@keyframes pulsar {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.1); }
-}
-
-/* Melhorando a experiência em celulares */
+/* Melhorando a visualização em celulares */
 @media screen and (max-width: 768px) {
-    body {
-        font-size: 16px;
-    }
-
-    header {
+    .explicacao {
+        flex-direction: column;
+        text-align: center;
         padding: 15px;
     }
 
-    .botao {
-        font-size: 1em;
-        padding: 12px 15px;
-        display: block;
-        margin: 10px auto;
-        width: 80%;
+    .explicacao .texto {
+        padding-right: 0;
     }
 
-    h1 {
-        font-size: 1.5em;
+    .explicacao-img {
+        width: 80px;
+        margin-top: 10px;
     }
 }

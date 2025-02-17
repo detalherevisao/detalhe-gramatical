@@ -1,0 +1,117 @@
+/* Definições gerais */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Estilo do cabeçalho */
+header {
+    background-color: #0073e6;
+    color: white;
+    padding: 20px;
+    font-size: 1.5em;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagem no topo */
+.imagem-topo img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-bottom: 5px solid #0073e6;
+}
+
+/* Seções de conteúdo */
+section {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Botão de iniciar quiz */
+.quiz-botao {
+    margin-top: 30px;
+    padding: 30px;
+    background: #f0f8ff;
+}
+
+.botao {
+    display: inline-block;
+    padding: 15px 25px;
+    margin-top: 20px;
+    background-color: #0073e6;
+    color: white;
+    font-size: 1.2em;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.3s ease-in-out;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.botao:hover {
+    background-color: #005bb5;
+}
+
+/* Rodapé */
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #0073e6;
+    color: white;
+}
+/* Remover os marcadores das listas */
+ul {
+    list-style: none; /* Remove os pontos da lista */
+    padding: 0; /* Remove espaço interno */
+    margin: 0; /* Remove margem externa */
+}
+/* Estilizar os botões de múltipla escolha */
+.botao-opcao {
+    display: block;
+    width: 80%;
+    max-width: 300px;
+    padding: 12px;
+    margin: 10px auto;
+    font-size: 1.1em;
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.botao-opcao:hover {
+    background-color: #005bb5;
+}
+/* Estilizar a seção de cada 'porquê' */
+.porque-item {
+    display: flex;
+    align-items: center;
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustar tamanho das imagens */
+.porque-item img {
+    width: 80px;  /* Ajuste o tamanho conforme necessário */
+    height: auto;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+/* Ajustar texto ao lado da imagem */
+.porque-item div {
+    text-align: left;
+}

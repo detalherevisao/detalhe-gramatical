@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Uso dos Porquês</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Quiz: Os Porquês</h1>
+    </header>
+
+    <main>
+        <!-- Campo para digitar o nome antes de começar o quiz -->
+        <section id="inicio-quiz">
+            <h2>Digite seu nome para começar o quiz:</h2>
+            <input type="text" id="nomeUsuario" placeholder="Seu nome">
+            <button onclick="iniciarQuiz()" class="botao">Iniciar Quiz</button>
+            
+            <!-- Botões de Ver e Zerar Ranking -->
+            <section id="botoes-ranking">
+                <button onclick="exibirRanking()" class="botao">Ver Ranking</button>
+                <button onclick="resetarRanking()" class="botao botao-reset">Zerar Ranking</button>
+            </section>
+        </section>
+
+        <section id="quiz-container" style="display: none;">
+            <p id="pergunta"></p>
+            <div id="opcoes"></div>
+            <p id="feedback"></p>
+            <p id="pontuacao"></p>
+        </section>
+
+        <section id="ranking-container" style="display: none;">
+            <h2>Ranking dos Jogadores</h2>
+            <ul id="ranking-lista"></ul>
+            <button onclick="voltarQuiz()" class="botao">Voltar ao Quiz</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

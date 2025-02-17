@@ -160,4 +160,35 @@ ul {
 
 .botao.destaque:hover {
     background-color: #cc3700; /* Vermelho mais escuro ao passar o mouse */
+} /* Botão do quiz com animação */
+.botao.destaque {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color: #ff4500; /* Vermelho chamativo */
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: pulsar 1.5s infinite alternate;
+}
+
+/* Efeito ao passar o mouse */
+.botao.destaque:hover {
+    background-color: #cc3700;
+    transform: scale(1.1); /* Aumenta ligeiramente o botão */
+}
+
+/* Animação de pulsação */
+@keyframes pulsar {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+    }
+    100% {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(255, 69, 0, 0.8);
+    }
 }

@@ -116,3 +116,20 @@ header {
         width: 80%;
     }
 }
+/* Estilizando o mapa mental */
+.mapa-mental {
+    text-align: center;
+    margin: 40px auto;
+    max-width: 800px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mapa-img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}

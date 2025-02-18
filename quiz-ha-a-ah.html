@@ -3,54 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Há, A e Ah - Detalhe Gramatical</title>
+    <title>Quiz - Há, A e Ah</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>O Uso de "Há", "A" e "Ah" 📖</h1>
-        <a href="index.html" class="botao">🏠 Voltar à Página Inicial</a>
+        <h1>Quiz: Há, A e Ah 🧠</h1>
+        <a href="ha-a-ah.html" class="botao">📖 Voltar à Explicação</a>
     </header>
 
     <main>
-        <section class="explicacao">
-            <h2>📌 Quando usar "Há"?</h2>
-            <p>Usamos "há" quando nos referimos a algo que aconteceu no passado ou quando substitui "existe".</p>
-            <ul>
-                <li>"Há dois anos, viajei para a Europa."</li>
-                <li>"Há muitas pessoas na sala."</li>
-            </ul>
+        <section id="quiz-container">
+            <p id="pergunta"></p>
+            <div id="opcoes"></div>
+            <p id="feedback"></p>
+            <p id="pontuacao"></p>
         </section>
 
-        <section class="explicacao">
-            <h2>📌 Quando usar "A"?</h2>
-            <p>Usamos "a" para indicar distância ou futuro.</p>
-            <ul>
-                <li>"Daqui a cinco minutos sairemos."</li>
-                <li>"Estamos a 10 km da praia."</li>
-            </ul>
-        </section>
-
-        <section class="explicacao">
-            <h2>📌 Quando usar "Ah"?</h2>
-            <p>"Ah" é uma interjeição usada para expressar emoção.</p>
-            <ul>
-                <li>"Ah, entendi agora!"</li>
-                <li>"Ah, que susto!"</li>
-            </ul>
-        </section>
-
-        <section class="mapa-mental">
-            <h2>🧠 Mapa Mental: "Há", "A" e "Ah"</h2>
-            <p>Confira o resumo abaixo para entender melhor as diferenças:</p>
-            <img src="mapa-mental-ha-a-ah.png" alt="Mapa Mental Há, A e Ah" class="mapa-img">
-        </section>
-
-        <section>
-            <h2>🎯 Teste seu conhecimento!</h2>
-            <p>Agora que você aprendeu as diferenças, faça o quiz abaixo:</p>
-            <a href="quiz-ha-a-ah.html" class="botao destaque">🧠 Fazer o Quiz</a>
+        <!-- Formulário para capturar o e-mail -->
+        <section id="email-container" style="display: none;">
+            <h2>🎉 Parabéns! Você acertou todas as perguntas! 🎉</h2>
+            <p>Digite seu e-mail para receber um acesso antecipado ao nosso material estruturado de língua portuguesa.</p>
+            <input type="email" id="emailUsuario" placeholder="Digite seu e-mail">
+            <button onclick="enviarEmail()">Receber Material</button>
         </section>
     </main>
+
+    <script src="script-quiz-ha-a-ah.js"></script>
 </body>
 </html>

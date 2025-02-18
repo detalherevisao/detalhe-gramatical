@@ -15,6 +15,11 @@ let perguntas = [
         resposta: "Ah" 
     },
     { 
+             pergunta: "Qual opção está?", 
+        opcoes: ["Ele chegou agora há pouco", "ele chegou agora a pouco",], 
+        resposta: "Há" 
+    },
+    { 
         pergunta: "Qual opção indica passado?", 
         opcoes: ["Há", "A", "Ah"], 
         resposta: "Há" 

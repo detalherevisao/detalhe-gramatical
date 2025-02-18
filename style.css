@@ -1,8 +1,8 @@
-/* Layout geral */
+/* Configuração geral do site */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     text-align: center;
-    background-color: #f8f8f8;
+    background-color: #f5f5f5;
     margin: 0;
     padding: 0;
     color: #333;
@@ -10,12 +10,26 @@ body {
 
 /* Cabeçalho */
 header {
-    background-color: #000; 
+    background-color: #000;
     color: white;
     padding: 20px;
+    animation: fadeIn 1s ease-in-out;
 }
 
-/* Botões */
+/* Animação de entrada nos títulos */
+.titulo-animado {
+    font-size: 2.5em;
+    opacity: 0;
+    animation: slideIn 1s ease-in-out forwards;
+}
+
+.subtitulo-animado {
+    font-size: 1.5em;
+    opacity: 0;
+    animation: slideIn 1.2s ease-in-out forwards;
+}
+
+/* Botões com animação */
 .botao {
     display: inline-block;
     margin: 15px;
@@ -24,8 +38,8 @@ header {
     color: white;
     background: #000;
     text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s ease-in-out, transform 0.2s;
+    border-radius: 10px;
+    transition: transform 0.3s, background 0.3s;
 }
 
 .botao:hover {
@@ -33,7 +47,7 @@ header {
     transform: scale(1.1);
 }
 
-/* Animação no botão do quiz */
+/* Botão do Quiz com efeito de brilho */
 .botao.destaque {
     background-color: #ff4500;
     animation: pulsar 1.5s infinite alternate;
@@ -44,42 +58,61 @@ header {
     100% { transform: scale(1.1); }
 }
 
-/* Explicação dos Porquês */
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-}
-
-.explicacao {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+/* Cartões estilizados */
+.card {
     background: white;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 15px;
     margin: 20px auto;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.8s ease-in-out forwards;
 }
 
-.explicacao img {
-    width: 120px;
-    height: auto;
-    border-radius: 5px;
+/* Efeito de hover nos cartões */
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-.texto {
-    flex: 1;
-    text-align: left;
-    padding-right: 20px;
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes fadeInUp {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Melhorando a visualização em celulares */
+@media screen and (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .botao {
+        font-size: 1em;
+        padding: 12px 15px;
+        display: block;
+        margin: 10px auto;
+        width: 80%;
     }
 }
